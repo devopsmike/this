@@ -1,0 +1,11 @@
+---
+- hosts: webservers
+  sudo: yes
+  connection: ssh
+  gather_facts: yes
+  tasks:
+    - name: install tools
+      apt: name={{item}} state=present update_cache=no
+      with_items:
+        - curl
+        - python-httplib2

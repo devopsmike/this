@@ -1,0 +1,17 @@
+- hosts: webservers
+  connection: local
+  gather_facts: yes
+  tasks:
+      - name: create a security group in us-east-2
+        ec2_group:
+            image: ami-0f2057f28f0a44d06
+            wait: yes
+            instance_type: t2.micro
+            group_id: sg-0ea0c944f64d4294a
+            region: us-east-2
+            aws_access_key: AKIAJHMNUQCYPECMHMEA
+            aws_secret_key: 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
+            count_tag:
+              Name: apacheserver`
+              exact_count: 1
+
