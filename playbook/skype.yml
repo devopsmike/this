@@ -1,0 +1,14 @@
+---
+- hosts: webservers
+  user: ansible
+  sudo: yes
+  connection: ssh
+  gather_facts: no
+  tasks:
+    - name: install proxy client
+      apt: pkg=squid-deb-proxy-client state=latest 
+    - name: apt keys
+      apt_key: id=7FAC5991  keyserver=keyserver.ubuntu.com state=present
+    - name: software installed
+      apt:  pkg=skype state=present update_cache=no
+    

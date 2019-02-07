@@ -1,0 +1,8 @@
+- hosts: webservers
+  user: ansible
+  sudo: yes
+  connection: ssh 
+  gather_facts: no 
+  tasks:
+  - name: Install Apache Web Server
+    apt: name=apache2  state=present update_cache=yes

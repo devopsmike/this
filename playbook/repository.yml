@@ -1,0 +1,10 @@
+- hosts: webservers
+  user: ansible
+  sudo: yes 
+  connection: ssh 
+  gather_facts: no 
+  tasks:
+   - name: install proxy client
+     apt: pkg=squid-deb-proxy-client state=latest
+   - name: repos enabled
+     apt_repository: repo='deb http://dl.google.com/linux/deb/ stable main non-free'  state=present 

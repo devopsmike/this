@@ -1,0 +1,8 @@
+- hosts: webservers
+  user: ansible
+  sudo: yes
+  connection: ssh
+  tasks:
+  - name: Install tree software
+    action: package name=tree state=latest
+

@@ -1,0 +1,7 @@
+---
+- hosts: webservers
+  sudo: yes
+  connection: ssh
+  gather_facts: yes
+  roles:
+    - control

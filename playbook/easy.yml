@@ -1,0 +1,6 @@
+- hosts: webservers
+  name: create a new EC2 instance
+  connection: ssh
+  gather_facts: yes
+  roles:
+    - launch_ec2

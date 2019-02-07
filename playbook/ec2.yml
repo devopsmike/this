@@ -1,0 +1,23 @@
+- hosts: webservers
+  sudo: yes 
+  connection: ssh 
+  gather_facts: yes
+  vars:
+    keypair: ubucli
+    instance_type: t2.micro
+    security_group: sg-0ea0c944f64d4294a
+    image: ami-0f65671a86f061fcd
+    region: us-east-2
+  tasks:
+    - name: Launch instance
+      ec2:
+         key_name: ubucli
+         instance_type: t2.micro
+         image: ami-0f65671a86f061fcd
+         wait: yes
+         region: us-east-2
+         aws_access_key: AKIAJHMNUQCYPECMHMEA
+         aws_secret_key: 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
+         vpc_subnet_id: subnet-04a36948
+         assign_public_ip: yes
+      register: ec2

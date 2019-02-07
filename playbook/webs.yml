@@ -1,0 +1,8 @@
+- hosts: webservers
+  user: ansible
+  sudo: yes 
+  connection: ssh 
+  gather_facts:  no 
+  tasks:
+  - name: Copy from the files test file
+    action: copy src=/home/ansible/demo/app/test.txt dest=/home/demo/copy/test.txt mode=0755

@@ -1,0 +1,23 @@
+---
+- hosts: webservers
+  user: ansible
+  sudo: yes
+  connection: ssh
+  gather_facts: yes
+  tasks:
+    - name: install web components
+      apt: name={{item}} state=present update_cache=no
+      with_items:
+        - nginx
+
+    - name: ensure nginx started
+      service: name=nginx state=started enabled=yes
+
+    - name: ensure mod_wsgi enabled
+      apache2_module: state=present name=wsgi
+      notify: restart nginx
+
+  handlers:
+    - name: restart nginx
+      service: name=nginx state=restarted    
+

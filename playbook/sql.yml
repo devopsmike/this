@@ -1,0 +1,9 @@
+---
+- hosts: webservers
+  user: ansible
+  sudo: yes
+  connection: ssh
+  gather_facts: no
+  tasks:
+    - name: install mysql-server
+      apt: name=mysql-server state=present update_cache=no

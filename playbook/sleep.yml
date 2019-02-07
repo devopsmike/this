@@ -1,0 +1,13 @@
+---
+
+- name: 'Test playbook to sleep for a specified interval'
+  hosts: webservers
+  gather_facts: yes
+  connection: ssh
+  user: ansible
+  vars:
+    sleep_interval: 40
+
+  tasks:
+    - name: sleep for a specified interval
+      command: sleep '{{ sleep_interval }}'

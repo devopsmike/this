@@ -1,0 +1,16 @@
+---
+- hosts: webservers
+  sudo: yes 
+  connection: local
+  gather_facts: yes
+  remote_user: ubuntu
+  tasks:
+  - name: Stop myserver instance
+    local_action:
+        module: ec2
+        region: us-east-2
+        instance_type: t2.micro
+        aws_access_key: AKIAJHMNUQCYPECMHMEA
+        aws_secret_key: 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
+        instance_ids: i-0b1222fbfb5479360
+        state: stopped

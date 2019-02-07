@@ -1,0 +1,10 @@
+---
+- hosts: webservers
+  user: ansible
+  sudo: yes
+  connection: ssh
+  gather_facts: no
+  tasks:
+    - name: install nginx
+      apt: name=nginx state=present update_cache=no
+
